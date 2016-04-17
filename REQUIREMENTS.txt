@@ -1,0 +1,17 @@
+Iteration 1
+* lock orientation
+* all functionality on one screen
+* both color>value and value>color split top/bottom, line separator
+* one convert button for each
+* 4 color combos only (E6, E12, E24 series only)
+* spinners for color select, textview for color display
+* textedit for value enter, spinner for tolerance, textview for value display
+* allow nonexistant values to be processed
+* no colorful design, function only FUNCTION OVER FORM
+
+FUTURE
+* screen rotation
+* multiple screens (switch screen for different operation color>value/value>color)
+* multiple color band systems
+* app design, Ohm symbol, colors, background resistors
+* restrict to real values
