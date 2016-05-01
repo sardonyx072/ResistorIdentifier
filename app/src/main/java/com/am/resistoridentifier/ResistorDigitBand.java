@@ -24,4 +24,8 @@ public enum ResistorDigitBand {
         this.color = color;
         this.value = value;
     }
+
+    public int getValue(){
+        return this.value;
+    }
 }

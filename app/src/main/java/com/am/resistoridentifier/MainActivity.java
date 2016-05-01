@@ -5,10 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    Spinner c2v_digit1;
+    Spinner c2v_digit2;
+    Spinner c2v_multiplier;
+    Spinner c2v_tolerance;
+    TextView c2v_value;
+    private Button btnClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,21 +28,28 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Spinner c2v_digit1 = (Spinner) findViewById(R.id.c2v_digit1spinner);
+        btnClick = (Button) findViewById(R.id.c2v_button) ;
+        btnClick.setOnClickListener(this);
+
+        c2v_digit1 = (Spinner) findViewById(R.id.c2v_digit1spinner);
         ArrayAdapter aadigit1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorDigitBand.values());
         c2v_digit1.setAdapter(aadigit1);
 
-        Spinner c2v_digit2 = (Spinner) findViewById(R.id.c2v_digit2spinner);
+        c2v_digit2 = (Spinner) findViewById(R.id.c2v_digit2spinner);
         ArrayAdapter aadigit2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorDigitBand.values());
-        c2v_digit2.setAdapter(aadigit1);
+        c2v_digit2.setAdapter(aadigit2);
 
-        Spinner c2v_multiplier = (Spinner) findViewById(R.id.c2v_multiplierspinner);
+        c2v_multiplier = (Spinner) findViewById(R.id.c2v_multiplierspinner);
         ArrayAdapter aamult = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorMultiplierBand.values());
         c2v_multiplier.setAdapter(aamult);
 
-        Spinner c2v_tolerance = (Spinner) findViewById(R.id.c2v_tolerancespinner);
+        c2v_tolerance = (Spinner) findViewById(R.id.c2v_tolerancespinner);
         ArrayAdapter aatoler = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorToleranceBand.values());
         c2v_tolerance.setAdapter(aatoler);
+
+        c2v_value = (TextView) findViewById(R.id.c2v_value);
+
+
 
     }
 
@@ -55,5 +73,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        int digit1value = ((ResistorDigitBand) c2v_digit1.getItemAtPosition(c2v_digit1.getSelectedItemPosition())).getValue();
+        int digit2value = ((ResistorDigitBand) c2v_digit2.getItemAtPosition(c2v_digit2.getSelectedItemPosition())).getValue();
+        double multipliervalue = ((ResistorMultiplierBand) c2v_multiplier.getItemAtPosition(c2v_multiplier.getSelectedItemPosition())).getValue();
+        double tolerancevalue = ((ResistorToleranceBand) c2v_tolerance.getItemAtPosition(c2v_tolerance.getSelectedItemPosition())).getValue();
+
+        String result = ((digit1value*10)+(digit2value))*multipliervalue+" "+tolerancevalue+"%\n";
+
+        c2v_value.setText(result);
     }
 }

@@ -22,4 +22,7 @@ public enum ResistorToleranceBand {
         this.value = value;
     }
 
+    public double getValue(){
+        return this.value;
+    }
 }

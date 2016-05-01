@@ -25,4 +25,8 @@ public enum ResistorMultiplierBand {
         this.value = value;
     }
 
+    public double getValue(){
+        return this.value;
+    }
+
 }
