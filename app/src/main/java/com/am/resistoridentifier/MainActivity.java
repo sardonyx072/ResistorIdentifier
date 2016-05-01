@@ -1,13 +1,12 @@
 package com.am.resistoridentifier;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,15 +17,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        // asdfasdfadfafafadsfierjmfrejgitspv,s9,coir,cgst this is a comment
+        Spinner c2v_digit1 = (Spinner) findViewById(R.id.c2v_digit1spinner);
+        ArrayAdapter aadigit1 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorDigitBand.values());
+        c2v_digit1.setAdapter(aadigit1);
+
+        Spinner c2v_digit2 = (Spinner) findViewById(R.id.c2v_digit2spinner);
+        ArrayAdapter aadigit2 = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorDigitBand.values());
+        c2v_digit2.setAdapter(aadigit1);
+
+        Spinner c2v_multiplier = (Spinner) findViewById(R.id.c2v_multiplierspinner);
+        ArrayAdapter aamult = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorMultiplierBand.values());
+        c2v_multiplier.setAdapter(aamult);
+
+        Spinner c2v_tolerance = (Spinner) findViewById(R.id.c2v_tolerancespinner);
+        ArrayAdapter aatoler = new ArrayAdapter(this,android.R.layout.simple_spinner_item,ResistorToleranceBand.values());
+        c2v_tolerance.setAdapter(aatoler);
+
     }
 
     @Override
